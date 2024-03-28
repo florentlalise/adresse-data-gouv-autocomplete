@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-bs-theme="dark">
+  <div class="container">
+
+    <div class="mb-3">
+      <label for="adress">Autocompletion</label>
+      <div style="position: relative;">
+        <input type="text" class="form-control" name="autocomplete" id="autocomplete" data-autocomplete-type="housenumber">
+        <div class="search-dropdown" id="search-dropdown">
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="mb-3">
+      <label for="adress_end">Adresse</label>
+      <input type="text" name="_adress_end" id="adress_end" class="form-control mb-3 basicAutoComplete" autocomplete="off"  >
+    </div>
+    <div class="mb-3">
+        <label for="postal_code_end">Code Postal</label>
+        <input type="text" name="_postal_code_end" id="postal_code_end" class="form-control mb-3" autocomplete=""  >
+    </div>
+    <div class="mb-3">
+        <label for="city_end">Ville</label>
+        <input type="text" name="_city_end" id="city_end" class="form-control mb-3" autocomplete=""  >
+    </div>
+    <div class="mb-3">
+        <label for="country_end">Pays</label>
+        <input type="text" name="_country_end" id="country_end" class="form-control mb-3" autocomplete=""  >
+    </div>
+    <div class="mb-3">
+        <label for="latitude_end">Latitude</label>
+        <input type="text" name="_latitude_end" id="latitude_end" class="form-control mb-3" autocomplete=""  >
+    </div>
+    <div class="mb-3">
+        <label for="longitude_end">Longitude</label>
+        <input type="text" name="_longitude_end" id="longitude_end" class="form-control mb-3" autocomplete=""  >
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="autocomplete.js"></script>
+
+  <script>
+    // Usage example:
+    function autocompleteCallback(prediction) {
+      document.getElementById('adress_end').value = `${prediction.housenumber} ${prediction.street}`;
+      document.getElementById('postal_code_end').value = prediction.postcode;
+      document.getElementById('city_end').value = prediction.city;
+      document.getElementById('country_end').value = 'France';
+      document.getElementById('latitude_end').value = prediction.coordinates.latitude;
+      document.getElementById('longitude_end').value = prediction.coordinates.longitude;
+      console.log(prediction);
+    }
+    const autocomplete = new Autocomplete('autocomplete', 'search-dropdown', autocompleteCallback);
+
+  </script>
+</body>
+</html>
