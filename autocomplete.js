@@ -40,7 +40,7 @@ class Autocomplete {
   handleFocusOut() {
     setTimeout(() => {
       this.dropdown.style.display = "none";
-    }, 50);
+    }, 150);
   }
 
   constructUrl(value, type) {
